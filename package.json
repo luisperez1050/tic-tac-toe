@@ -1,0 +1,8 @@
+{
+  "name": "svelte",
+  "version": "1.0.0",
+  "description": "testing",
+  "main": "index.js",
+  "author": "Luis <50057252+luisperez1050@users.noreply.github.com>",
+  "license": "MIT"
+}
