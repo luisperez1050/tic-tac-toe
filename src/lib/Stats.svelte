@@ -22,7 +22,7 @@
         <small>Round: {round}</small>
     </div>
     {#if winner || emptySquares === 0}
-        <div class="rounds">
+        <div class="next-round">
             <button on:click={newRound}>Play Another Round</button>
         </div>
     {/if}
@@ -50,14 +50,15 @@
         background-color: #c13000;
     }
     .stats {
+        display: flex;
         max-width: 800px;
         margin: 0 auto;
     }
-    .stats div + div {
-        margin-left: 20px;
-    }
-    .scores, .rounds {
-        display: inline-block;
+    .scores, .next-round {
+        flex: 1;
         vertical-align: bottom;
+    }
+    .next-round {
+        text-align: right;
     }
 </style>

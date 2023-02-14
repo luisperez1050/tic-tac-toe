@@ -23,6 +23,9 @@
     let boardSquares = new Array(9).fill('');
     let emptySquares = boardSquares.filter((square) => square === '')?.length;
 
+    /**
+     * @param {number} index
+     */
     function selectBlock(index, override = null) {
         turn = turn === 'X' ? 'O' : 'X'
         if (override) turn = override
@@ -45,6 +48,9 @@
             if (checkO === 3) return 'O'
         }
     }
+    /**
+     * @param {string} player
+     */
     function tallyScore(player) {
         score[player]++
     }
@@ -64,18 +70,7 @@
     }
 </script>
 
-<Banner />
-<h1>
-    {#if winner}
-        Winner: {winner}
-    {:else if emptySquares === 9}
-        Please select a spot
-    {:else if emptySquares === 0}
-        Its a tie, play another round
-    {:else}
-        Keep Playing {emptySquares} spaces left
-    {/if}
-</h1>
+<Banner winner={winner} emptySquares={emptySquares}/>
 <div class="board">
     {#each boardSquares as square, index}
         <div class="square" on:click={() => { if (!winner && !square && emptySquares > 0) selectBlock(index) }}>
@@ -83,15 +78,11 @@
         </div>
     {/each}
 </div>
+<!-- TODO: get rid of soon -->
 <button on:click={testMethod}>Test</button>
 <Stats nextPlayer={nextPlayer} winner={winner} score={score} round={round} emptySquares={emptySquares} on:round={nextRound}/>
 
 <style>
-    h1 {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
     .board{
         background-color: #ff3e00;
         display: grid;

@@ -1,6 +1,21 @@
+<script>
+    export let winner
+    export let emptySquares
+
+</script>
 <header>
     <h1>Let's Play Tic Tac Toe!</h1>
-    <small>* made with Svelte</small>
+    <p>
+      {#if winner}
+          Winner: {winner}
+      {:else if emptySquares === 9}
+          Please select a spot
+      {:else if emptySquares === 0}
+          Its a tie, play another round
+      {:else}
+          Keep Playing {emptySquares} spaces left
+      {/if}
+    </p>
 </header>
 
 <style>
@@ -17,13 +32,8 @@
     font-size: 3rem;
     font-weight: 100;
     line-height: 1.1;
-    margin: 2rem auto 0;
+    margin: auto 0;
     max-width: 14rem;
-  }
-
-  small {
-    color: #ff3e00;
-    font-weight: 700;
   }
 
   @media (min-width: 480px) {
