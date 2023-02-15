@@ -35,7 +35,7 @@
         winner = checkWinner() ?? null;
         emptySquares = boardSquares.filter((square) => square === '')?.length;
         if (winner) tallyScore(winner);
-        
+        document.querySelector(`#square_${index}`)?.classList.remove('selectable');
     };
     function checkWinner() {
         Xcombinations = boardSquares.map((square, index) => { if (square === 'X') return index });
@@ -61,6 +61,7 @@
         turn = '';
         boardSquares.map((square, index) => boardSquares[index] = '');
         emptySquares = boardSquares.filter((square) => square === '')?.length
+        const test = document.querySelectorAll('.square').forEach((square) => square.classList.add('selectable'))
     }
     // proof of sending updates to 
     function testMethod() {
@@ -73,7 +74,7 @@
 <Banner winner={winner} emptySquares={emptySquares}/>
 <div class="board">
     {#each boardSquares as square, index}
-        <div class="square" on:click={() => { if (!winner && !square && emptySquares > 0) selectBlock(index) }}>
+        <div class="square selectable" id="square_{index}" on:click={() => { if (!winner && !square && emptySquares > 0) selectBlock(index) }}>
             {square}
         </div>
     {/each}
@@ -99,6 +100,9 @@
         justify-content: center;
         font-size: 70px;
         font-weight: 700;
+    }
+    .selectable:hover {
+        opacity: 0.9;
     }
 
 </style>
