@@ -59,15 +59,10 @@
         round++;
         winner = null;
         turn = '';
+        nextPlayer= 'X';
         boardSquares.map((square, index) => boardSquares[index] = '');
         emptySquares = boardSquares.filter((square) => square === '')?.length
-        const test = document.querySelectorAll('.square').forEach((square) => square.classList.add('selectable'))
-    }
-    // proof of sending updates to 
-    function testMethod() {
-        selectBlock(0, 'O')
-        selectBlock(1, 'O')
-        selectBlock(2, 'O')
+        document.querySelectorAll('.square').forEach((square) => square.classList.add('selectable'))
     }
 </script>
 
@@ -79,8 +74,7 @@
         </div>
     {/each}
 </div>
-<!-- TODO: get rid of soon -->
-<button on:click={testMethod}>Test</button>
+
 <Stats nextPlayer={nextPlayer} winner={winner} score={score} round={round} emptySquares={emptySquares} on:round={nextRound}/>
 
 <style>
